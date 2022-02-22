@@ -2,5 +2,5 @@
 package testpack;
 
 public static void main(String args[]]){
-    System.
+    System.out.println("Solid Bruh Moment")
 }
