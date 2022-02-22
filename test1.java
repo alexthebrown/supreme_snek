@@ -1,1 +1,3 @@
-//testing Ellery Sabado
+/**
+ * Snake Game
+ */
