@@ -54,7 +54,12 @@ public class Character {
         return isCrashed;
     }
 
-    
-
+    /**
+     * More Methods
+     * 1. returns the snake
+     * 2. set values in the snake
+     * 3. returns the head of the snake
+     * 4. sets the head of the snake
+     */
 
 }
