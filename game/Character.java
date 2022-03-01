@@ -20,6 +20,7 @@ public class Character {
      * Constructor that initialise the snake with the head
      */
     public Character(Cell initialPosition) {
+
         head = initialPosition; 
         snakeCells.add(head);
     }
@@ -29,6 +30,7 @@ public class Character {
      */
     public void growSnake(){
 
+        snakeCells.add(head);
     }
     /**
      * A method to 
@@ -40,9 +42,10 @@ public class Character {
     /**
      * A method to return if the Snake has crashed or not have crashed
      * 
-     * @return isCrashed, true or false if 
+     * @return isCrashed, true or false if the head crashes
      */
     public boolean isCrashed(){
+
         return isCrashed;
     }
 
