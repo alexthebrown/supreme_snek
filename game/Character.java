@@ -9,10 +9,10 @@ public class Character {
     static final int BOARD_SIZE_X = 32;
     /* Maximum size of Board in y-direction */
     static final int BOARD_SIZE_Y = 32;
-
-    private LinkedList<Cell> snakeCells= new LinkedList();
+    /* Creats an array list for the Snake Charater */
+    private LinkedList<Cell> snakeCells = new LinkedList();
+    /* The first pixel for the snake character */
     private Cell head;
-
     /* True of false statement if the Snake is crashed or not*/
     private boolean isCrashed;
 
@@ -33,10 +33,15 @@ public class Character {
         snakeCells.add(head);
     }
     /**
-     * A method to 
+     * A method to move the snake
      */
     public void MoveSnake(){
 
+        Cell tail = snakeCells.removeLast();
+        //tail.setCellType(CellType.EMPTY);
+        
+        head = nextCell;
+        snakeCells.addFirst();
     }
 
     /**
