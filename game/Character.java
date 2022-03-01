@@ -1,4 +1,9 @@
 package game;
-public class character {
+/**
+ * This repersents the Snake character
+ */
+public class Character {
+
+    
     
 }
