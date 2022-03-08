@@ -13,12 +13,12 @@ import java.io.IOException;
 
 
 
-public class Board extends JFrame { //Alex's Work
+public class Window extends JFrame { //Alex's Work
 
 private int Collums;
 private int rows;
 
-    public Board(){
+    public Window(){
         setTitle("Supreme Snek");
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
