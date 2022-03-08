@@ -37,6 +37,7 @@ public class Input implements ActionListener {
         right.setText("Right : 0");
 
         
+    
         time.start();
 
         frame.addKeyListener(new KeyListener(){
@@ -86,18 +87,20 @@ public class Input implements ActionListener {
         frame.add(panel);
     }
 
+    public void rectangleCharacter(Graphics g) {
+        rectangleCharacter(g);
+        g.setColor(Color.BLUE);
+        g.fillRect(x,y, 50, 30);
+        }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         x += velX;
         y += velY;
-       
+        
     }
 
-    public void rectangleCharacter(Graphics g) {
-        super.rectangleCharacter(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(x,y, 50, 30);
-    }
+    
     public static void main(String args[]) {
         new Input();
         
