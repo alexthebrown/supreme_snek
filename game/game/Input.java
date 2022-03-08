@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -19,6 +20,7 @@ public class Input implements ActionListener {
         frame.setSize(400, 400);
         frame.setFocusable(true);
         frame.setFocusTraversalKeysEnabled(false);
+        
 
         JPanel panel = new JPanel();
         JLabel up = new JLabel();
@@ -59,18 +61,18 @@ public class Input implements ActionListener {
                 switch(keyCode) {
                     case KeyEvent.VK_UP:
                         velX = 0;
-                        velY = 1;
+                        velY += 1;
                         break;
                     case KeyEvent.VK_DOWN:
                         velX = 0;
-                        velY = -1;
+                        velY += -1;
                         break;
                     case KeyEvent.VK_LEFT:
-                        velX = -1;
+                        velX += -1;
                         velY = 0;
                         break;
                     case KeyEvent.VK_RIGHT:
-                        velX = 1;
+                        velX += 1;
                         velY = 0;
                         break;
                 }
@@ -95,6 +97,13 @@ public class Input implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+       if(x<0 || x > 350) {
+           velX = 0;
+       }
+       if (y<0 ||y > 350) {
+           velY = 0;
+       }
+       
         x += velX;
         y += velY;
         
