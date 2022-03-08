@@ -1,18 +1,28 @@
 package game;
 public class Cell {
-    
-    private static final int WALL = 1;
-    private static final int APPLE = 2;
-    private static final int HEAD = 3;
-    private static final int BODY = 4;
-    private static final int BLANK = 5;
 
     private int cellType;
+    private int rowPos;
+    private int collumPos;
 
-    public Cell(int type){
+    public Cell(int type, int row, int collum){
+        cellType = type;
+        rowPos = row;
+        collumPos =  collum;
+    }
+    public void updateCell(int type){ 
         cellType = type;
     }
-    public updateCell(int type)
+    public int getCellType(){
+        return cellType;
+    }
+    public int getRow(){
+        return rowPos;
+    }
+    public int getCollum(){
+        return collumPos;
+    }
+
 }
 
 
