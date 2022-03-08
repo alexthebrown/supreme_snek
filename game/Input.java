@@ -1,9 +1,11 @@
 package game;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.Graphics;
 
 import javax.swing.*;
 
@@ -89,6 +91,12 @@ public class Input implements ActionListener {
         x += velX;
         y += velY;
        
+    }
+
+    public void rectangleCharacter(Graphics g) {
+        super.rectangleCharacter(g);
+        g.setColor(Color.BLUE);
+        g.fillRect(x,y, 50, 30);
     }
     public static void main(String args[]) {
         new Input();
