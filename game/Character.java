@@ -10,7 +10,7 @@ public class Character {
     /* Maximum size of Board in y-direction */
     static final int BOARD_SIZE_Y = 32;
     /* Creats an array list for the Snake Charater */
-    private LinkedList<Cell> snakeCells = new LinkedList();
+    private LinkedList<Cell> snakeCells = new LinkedList<>();
     /* The first pixel for the snake character */
     private Cell head;
     /* True of false statement if the Snake is crashed or not*/
@@ -23,6 +23,7 @@ public class Character {
 
         head = initialPosition; 
         snakeCells.add(head);
+        //head.setCellType(CellType.SNAKE_NODE);
     }
     
     /**
@@ -35,13 +36,14 @@ public class Character {
     /**
      * A method to move the snake
      */
-    public void MoveSnake(){
+    public void MoveSnake(Cell nextCell){
 
         Cell tail = snakeCells.removeLast();
-        //tail.setCellType(CellType.EMPTY);
+        tail.setCellType(CellType.EMPTY);
         
         head = nextCell;
-        snakeCells.addFirst();
+        //head.setCellType(CellType.SNAKE_NODE);
+        snakeCells.addFirst(head);
     }
 
     /**
@@ -50,16 +52,53 @@ public class Character {
      * @return isCrashed, true or false if the head crashes
      */
     public boolean isCrashed(){
+        isCrashed = false;
 
+        for(Cell cell: snakeCells){
+            if(cell == nextCell){
+                isCrashed = true;
+
+            }
+        }
         return isCrashed;
+    }
+    /**
+     * returns the snake
+     * 
+     * @return snakeCells which is the the values of the snake in the LinkedList
+     */
+    public LinkedList<Cell> getSnakeCells() {
+
+        return snakeCells;
+    }
+    /**
+     * This method sets values of the snake
+     * 
+     * @param snakeCells, all the cells in the linkedlist for the snake
+     */
+    public void setSnakeCells(LinkedList<Cell> snakeCells) {
+
+        this.snakeCells = snakeCells;
+    }
+    /**
+     * This method returns the head of the snake
+     * 
+     * @return head, which is the cell head
+     */
+    public Cell getHead() {
+        return head;
+
     }
 
     /**
-     * More Methods
-     * 1. returns the snake
-     * 2. set values in the snake
-     * 3. returns the head of the snake
-     * 4. sets the head of the snake
+     * This medoth sets the head of the snake
+     * 
+     * @param head cell loaction of the snake head
      */
+    public void setHead(Cell head) {
+        this.head = head;
+
+    }
+
 
 }
