@@ -10,6 +10,153 @@ import java.awt.Graphics;
 
 import javax.swing.*;
 
+
+
+
+    public class Input {
+        public static final int MOVE_STOPPED = 0;
+        public static final int MOVE_RIGHT = 1;
+        public static final int MOVE_LEFT = -1;
+        public static final int MOVE_UP = 2;
+        public static final int MOVE_DOWN = -2;
+
+        private Character snake;
+        private Board board;
+        private int movement;
+        private boolean gameEnded;
+
+        public Input(Character snake, Board board) {
+            this.snake = snake;
+            this.board = board;
+        }
+
+        public Character getSnake() {
+            return snake;
+        }
+
+        public void setSnake(Character snake) {
+            this.snake = snake;
+        }
+
+        public Board getBoard() {
+            return board;
+        }
+
+        public void setBoard(Board board) {
+            this.board = board;
+        }
+
+        public boolean isGameEnded() {
+            return gameEnded;
+        }
+
+        public int getMovement() {
+            return movement;
+        }
+
+        public void setDirection(int movement) 
+	    { 
+		this.movement = movement; 
+	    } 
+
+        public void updateSnake() {
+            if (!isGameEnded()) {
+                if(movement != MOVE_STOPPED) {
+                    Cell moveCell = getNextCell(snake.getHead());
+
+                    if (snake.checkCrash(moveCell)) {
+                        setDirection(movement);
+                        gameEnded = true;
+                    }
+                    else {
+                        snake.move(nextCell);
+                        if(moveCell.getCellType() == CellType.FOOD) {
+                            snake.grow();
+                            board.generateFood();
+                        }
+                    }
+                }
+            }
+        }
+
+        Private Cell getNextCell(Cell currentPosition) {
+            int row = currentPosition.getRow();
+            int col = currentPosition.getCol();
+
+            if(movement == MOVE_RIGHT){
+                col++;
+            }
+            else if(movement == MOVE_LEFT){
+                col--;
+            }
+            else if(movement == MOVE_DOWN){
+                row++;
+            }
+            else if(movement == MOVE_UP){
+                row--;
+            }
+            Cell moveCell = board.getCells()[row][col];
+
+            return moveCell;
+        }
+
+    public static void main(String args[]) {
+        Cell initalPositionCell = new Cell(0,0);
+        Character initialSnake = new Snake(initalPositionCell);
+        Board board = new Board(32, 32);
+        Input newGame = new Input(initialSnake, board);
+        newGame.gameEnded = false;
+        newGame.movement = MOVE_RIGHT;
+
+        for(int i = 0; i < 5; i++) {
+            if(i == 2) {
+                newGame.board.generateFood();
+            }
+            newGame.updateSnake();
+            if(i == 3) {
+                newGame.movement = MOVE_RIGHT;
+            }
+            if(newGame.gameEnded == true) {
+                break;
+            }
+        }
+    }
+ }
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 public class Input implements ActionListener {
     Timer time = new Timer(5, this);
     int x = 0, y = 0, velX = 0, velY = 0;
@@ -97,24 +244,14 @@ public class Input implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if(x<0 || x > 350) {
+       if(x < 0 || x > 350) {
            velX = 0;
        }
-       if (y<0 ||y > 350) {
+       if (y < 0 || y > 350) {
            velY = 0;
        }
        
         x += velX;
         y += velY;
         
-    }
-
-    
-    public static void main(String args[]) {
-        new Input();
-        
-    }
-
-
-    
-}
+    }*/
