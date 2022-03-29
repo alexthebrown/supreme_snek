@@ -1,5 +1,6 @@
-import java.util.LinkedList;
+
 package game;
+import java.util.LinkedList;
 /**
  * This repersents the Snake character
  */
@@ -51,7 +52,7 @@ public class Character {
      * 
      * @return isCrashed, true or false if the head crashes
      */
-    public boolean isCrashed(){
+    public boolean isCrashed(Cell nextCell){
         isCrashed = false;
 
         for(Cell cell: snakeCells){
