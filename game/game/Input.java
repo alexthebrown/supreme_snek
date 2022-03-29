@@ -62,16 +62,16 @@ import javax.swing.*;
         public void updateSnake() {
             if (!isGameEnded()) {
                 if(movement != MOVE_STOPPED) {
-                    Cell moveCell = getNextCell(snake.getHead());
+                    Cell moveCell = getSnakesCell(snake.getHead());
 
-                    if (snake.checkCrash(moveCell)) {
+                    if (snake.isCrashed(moveCell)) {
                         setDirection(movement);
                         gameEnded = true;
                     }
                     else {
-                        snake.move(nextCell);
+                        snake.MoveSnake(moveCell);
                         if(moveCell.getCellType() == CellType.FOOD) {
-                            snake.grow();
+                            snake.growSnake();
                             board.generateFood();
                         }
                     }
@@ -79,9 +79,9 @@ import javax.swing.*;
             }
         }
 
-        Private Cell getNextCell(Cell currentPosition) {
+        Private Cell getSnakesCell(Cell currentPosition) {
             int row = currentPosition.getRow();
-            int col = currentPosition.getCol();
+            int col = currentPosition.getColumn();
 
             if(movement == MOVE_RIGHT){
                 col++;
