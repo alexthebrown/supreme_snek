@@ -34,7 +34,7 @@ public class Board {
 		int row = (int)(Math.random() * ROW_COUNT); 
 		int column = (int)(Math.random() * COL_COUNT); 
 
-		cells[row][column].setCellType(CellType.FOOD); 
+		cells[row][column].updateCell(CellType.FOOD); 
 		System.out.println("Food is generated at: " + row + " " + column); 
 	} 
 } 

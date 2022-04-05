@@ -1,19 +1,19 @@
 package game;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.Graphics;
-import java.io.Serializable;
-import java.lang.Comparable;
+//import java.awt.Color;
+//import java.awt.Component;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//import java.awt.event.KeyEvent;
+//import java.awt.event.KeyListener;
+//import java.awt.Graphics;
+//import java.io.Serializable;
+//import java.lang.Comparable;
 
 
-import javax.swing.*;
-public enum CellType<
-    EMPTY  extends java.lang.Enum CellType;
+//import javax.swing.*;
+//public enum CellType< EMPTY, FOOD extends java.lang.Enum CellType;
+enum CellType {FOOD , EMPTY}
 
 
 
