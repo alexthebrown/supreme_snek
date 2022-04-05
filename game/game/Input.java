@@ -7,8 +7,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Graphics;
+import java.io.Serializable;
+import java.lang.Comparable;
+
 
 import javax.swing.*;
+public enum CellType<
+    EMPTY  extends java.lang.Enum CellType;
 
 
 
@@ -62,7 +67,7 @@ import javax.swing.*;
         public void updateSnake() {
             if (!isGameEnded()) {
                 if(movement != MOVE_STOPPED) {
-                    Cell moveCell = getSnakesCell(snake.getHead());
+                    Cell moveCell = getSnakesCells(snake.getHead());
 
                     if (snake.isCrashed(moveCell)) {
                         setDirection(movement);
@@ -79,7 +84,7 @@ import javax.swing.*;
             }
         }
 
-        Private Cell getSnakesCell(Cell currentPosition) {
+        private Cell getSnakesCells(Cell currentPosition) {
             int row = currentPosition.getRow();
             int col = currentPosition.getColumn();
 

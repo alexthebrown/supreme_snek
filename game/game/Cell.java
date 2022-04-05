@@ -4,15 +4,15 @@ public class Cell {
     /**
      * The current Cell Type
      */
-    private int cellType;
+    private CellType cellType;
     /**
      * The current Cell on the row
      */
-    private int row;
+    private final int row;
     /**
      * The current Cell in the column
      */
-    private int col;
+    private final int col;
 
     /**
      * This is the constructor that set the cell type, the current row and column
@@ -32,7 +32,7 @@ public class Cell {
      * 
      * @param type, The given Cell type
      */
-    public void updateCell(int type){ 
+    public void updateCell(CellType type){ 
         cellType = type;
 
     }
@@ -42,7 +42,7 @@ public class Cell {
      * 
      * @return celltype
      */
-    public int getCellType(){
+    public CellType getCellType(){
         return cellType;
 
     }

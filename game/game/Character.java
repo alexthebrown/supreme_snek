@@ -40,7 +40,7 @@ public class Character {
     public void MoveSnake(Cell nextCell){
 
         Cell tail = snakeCells.removeLast();
-        tail.setCellType(CellType.EMPTY);
+        tail.updateCell(CellType.EMPTY);
         
         head = nextCell;
         //head.setCellType(CellType.SNAKE_NODE);
