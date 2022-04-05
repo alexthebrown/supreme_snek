@@ -23,9 +23,6 @@ private int rows;
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,100,720,720);
-        ImageIO img = null;
-}
-        setIconImage(img);
 
         JPanel pane = new JPanel();
 
