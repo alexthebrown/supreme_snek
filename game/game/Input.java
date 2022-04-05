@@ -102,7 +102,7 @@ import javax.swing.*;
 
     public static void main(String args[]) {
         Cell initalPositionCell = new Cell(0,0);
-        Character initialSnake = new Snake(initalPositionCell);
+        Character initialSnake = new Character(initalPositionCell);
         Board board = new Board(32, 32);
         Input newGame = new Input(initialSnake, board);
         newGame.gameEnded = false;
