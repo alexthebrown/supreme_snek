@@ -1,42 +1,40 @@
 package game;
 
-import java.util.Random;
-bruh.txt
+public class Board { 
 
-public class Board{
-    private Cell[][] boardTypes = new Cell[32][32];// Creates a cell object in every spot of the array.
+	final int ROW_COUNT, COL_COUNT; 
+	private Cell[][] cells; 
 
+	public Board(int rowCount, int columnCount) 
+	{ 
+		ROW_COUNT = rowCount; 
+		COL_COUNT = columnCount; 
 
-    /**
-     * Key For Square Types:
-     * 1 = Wall
-     * 2 = Apple
-     * 3 = Head of Snake
-     * 4 = Body of Snake
-     * 5 = Blank Space
-     */
-    /**
-     * Creates a board that is 32 x 32 and has walls on every side.
-     */
-    public Board(){
-        for(int i = 0; i < 32; i++){ //Sets all cell objects to blank spaces.
-            for(int t = 0; t < 32; t++){
-                boardTypes[t][i].updateCell(5);
-            }
-        }
-        for(int i = 0; i < 32; i++){ //Adds the walls in
-            boardTypes[0][i].updateCell(1);
-            boardTypes[31][i].updateCell(1);
-            boardTypes[i][0].updateCell(1);
-            boardTypes[i][31].updateCell(1);
-        }
+		cells = new Cell[ROW_COUNT][COL_COUNT]; 
+		for (int row = 0; row < ROW_COUNT; row++) { 
+			for (int column = 0; column < COL_COUNT; column++) { 
+				cells[row][column] = new Cell(row, column); 
+			} 
+		} 
+	} 
 
+	public Cell[][] getCells() 
+	{ 
+		return cells; 
+	} 
 
-        
-    }
-    public void updateSnake(int row, int collum){
-        
-    }
-    public
+	public void setCells(Cell[][] cells) 
+	{ 
+		this.cells = cells; 
+	} 
 
-}
+	public void generateFood() 
+	{ 
+		System.out.println("Going to generate food"); 
+		int row = (int)(Math.random() * ROW_COUNT); 
+		int column = (int)(Math.random() * COL_COUNT); 
+
+		cells[row][column].setCellType(CellType.FOOD); 
+		System.out.println("Food is generated at: " + row + " " + column); 
+	} 
+} 

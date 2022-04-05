@@ -21,8 +21,7 @@ public class Cell {
      * @param row, the given row position
      * @param col, the given column position
      */
-    public Cell(int type, int row, int col){
-        cellType = type;
+    public Cell(int row, int col){
         this.row = row;
         this.col = col;
 
