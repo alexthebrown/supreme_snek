@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "game",
         "Old Stuff",
-        "game"
+        "Snake/game"
     ]
 }
