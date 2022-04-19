@@ -22,12 +22,14 @@ public class GamePanel extends JPanel implements ActionListener{
 	char direction = 'R';
 	boolean reset = false;
 	boolean running = false;
+    Color background;
 	Timer timer;
 	Random random;
 	
 	GamePanel(){
 		random = new Random();
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+        background = Color.black;
 		this.setBackground(Color.black);
 		this.setFocusable(true);
 		this.addKeyListener(new MyKeyAdapter());
@@ -109,6 +111,8 @@ public class GamePanel extends JPanel implements ActionListener{
 			bodyParts++;
 			applesEaten++;
             delay = delay-3;
+            background = new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255));
+            this.setBackground(background);
 			newApple();
 		}
 	}
