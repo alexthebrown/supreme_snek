@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements ActionListener{
     Color background;
 	Timer timer;
 	Random random;
+    boolean shrink = true;
 	
 	GamePanel(){
 		random = new Random();
@@ -51,7 +52,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	}
 	public void draw(Graphics g) {
 		if(running) {
-			for(int i = 0; i < screen_height / UNIT_SIZE; i++) {
+			for(int i = 0; i <= screen_height / UNIT_SIZE; i++) {
                 g.setColor(Color.white);
 				g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, screen_height); //Vertical
                 g.drawLine(0, i*UNIT_SIZE, screen_width, i*UNIT_SIZE); //Horizontal
@@ -119,8 +120,20 @@ public class GamePanel extends JPanel implements ActionListener{
             delay = delay-5;
             background = new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255));
             this.setBackground(background);
-            screen_height = screen_height - 20;
-            screen_width = screen_width - 20;
+            if(shrink){
+                screen_height = screen_height - 20;
+                screen_width = screen_width - 20;
+                if (applesEaten % 24 == 0){
+                    shrink = false;
+                }
+            }
+            else {
+                screen_height = screen_height + 20;
+                screen_width = screen_width + 20;
+                if(screen_height == ORIG_H){
+                    shrink = true;
+                }
+            }
 			newApple();
 		}
 	}
