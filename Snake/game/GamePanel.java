@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements ActionListener{
 	
-	static final int SCREEN_WIDTH = 600;
+	static final int SCREEN_WIDTH = 1200;
 	static final int SCREEN_HEIGHT = 600;
-	static final int UNIT_SIZE = 25;
+	static final int UNIT_SIZE = 15;
 	static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
-	static final int DELAY = 60;
+	static int delay = 60;
 	final int x[] = new int[GAME_UNITS];
 	final int y[] = new int[GAME_UNITS];
 	int bodyParts = 6;
@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	public void startGame() {
 		newApple();
 		running = true;
-		timer = new Timer(DELAY, this);
+		timer = new Timer(delay, this);
 		timer.start();
 	
 	}
@@ -108,6 +108,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		if((x[0] == appleX) && (y[0] == appleY)) {
 			bodyParts++;
 			applesEaten++;
+            delay = delay-3;
 			newApple();
 		}
 	}
