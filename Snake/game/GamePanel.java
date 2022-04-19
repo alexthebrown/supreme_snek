@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements ActionListener{
 	
 	static int screen_width = 750;
+    static final int ORIG_W = screen_width;
 	static int screen_height = 750;
+    static final int ORIG_H = screen_height;
 	static final int UNIT_SIZE = 15;
 	static final int GAME_UNITS = (screen_width * screen_height) / UNIT_SIZE;
 	static int delay = 60;
@@ -50,8 +52,12 @@ public class GamePanel extends JPanel implements ActionListener{
 	public void draw(Graphics g) {
 		if(running) {
 			for(int i = 0; i < screen_height / UNIT_SIZE; i++) {
-				g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, screen_height);
-				g.drawLine(0, i*UNIT_SIZE, screen_width, i*UNIT_SIZE);
+                g.setColor(Color.white);
+				g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, screen_height); //Vertical
+                g.drawLine(0, i*UNIT_SIZE, screen_width, i*UNIT_SIZE); //Horizontal
+                g.setColor(Color.BLACK);
+				g.drawLine(0, i*UNIT_SIZE + 1, screen_width, i*UNIT_SIZE + 1);
+                g.drawLine(i*UNIT_SIZE + 1, 0, i*UNIT_SIZE +1, screen_height);
 			}
             
 			g.setColor(Color.red);
@@ -148,10 +154,14 @@ public class GamePanel extends JPanel implements ActionListener{
 	}
 	public void gameOver(Graphics g) {
 		//Game Over text
-		g.setColor(Color.red);
-		g.setFont(new Font("Impact", Font.BOLD, 80));
+		g.setColor(Color.black);
+		g.setFont(new Font("Impact", Font.BOLD, 85));
 		FontMetrics metrics = getFontMetrics(g.getFont());
-		g.drawString("Game Over", (screen_width - metrics.stringWidth("Game Over"))/2, screen_height / 2);
+		g.drawString("Game Over", (ORIG_W - metrics.stringWidth("Game Over"))/2, ORIG_H / 2);
+        g.setColor(Color.red);
+		g.setFont(new Font("Impact", Font.BOLD, 85));
+		metrics = getFontMetrics(g.getFont());
+		g.drawString("Game Over", ((ORIG_W - metrics.stringWidth("Game Over"))/2) + 5, 5 + (ORIG_H / 2));
 		if(reset) {
 			startGame();
 		}
