@@ -113,8 +113,8 @@ public class GamePanel extends JPanel implements ActionListener{
             delay = delay-5;
             background = new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255));
             this.setBackground(background);
-            screen_height = screen_height - 50;
-            screen_width = screen_width - 50;
+            screen_height = screen_height - 20;
+            screen_width = screen_width - 20;
 			newApple();
 		}
 	}
