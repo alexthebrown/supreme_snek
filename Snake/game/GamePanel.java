@@ -8,10 +8,10 @@ import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements ActionListener{
 	
-	static final int SCREEN_WIDTH = 1200;
-	static final int SCREEN_HEIGHT = 600;
+	static int screen_width = 750;
+	static int screen_height = 750;
 	static final int UNIT_SIZE = 15;
-	static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
+	static final int GAME_UNITS = (screen_width * screen_height) / UNIT_SIZE;
 	static int delay = 60;
 	final int x[] = new int[GAME_UNITS];
 	final int y[] = new int[GAME_UNITS];
@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	
 	GamePanel(){
 		random = new Random();
-		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		this.setPreferredSize(new Dimension(screen_width, screen_height));
         background = Color.black;
 		this.setBackground(Color.black);
 		this.setFocusable(true);
@@ -49,13 +49,13 @@ public class GamePanel extends JPanel implements ActionListener{
 	}
 	public void draw(Graphics g) {
 		if(running) {
-			for(int i = 0; i < SCREEN_HEIGHT / UNIT_SIZE; i++) {
-				g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
-				g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
+			for(int i = 0; i < screen_height / UNIT_SIZE; i++) {
+				g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, screen_height);
+				g.drawLine(0, i*UNIT_SIZE, screen_width, i*UNIT_SIZE);
 			}
             
 			g.setColor(Color.red);
-			g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+			g.fillOval(appleX, appleY, UNIT_SIZE + 5, UNIT_SIZE + 5);
 			
 			for(int i = 0; i < bodyParts; i++) {
 				if(i == 0) {
@@ -70,7 +70,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			g.setColor(Color.red);
 			g.setFont(new Font("Impact", Font.BOLD, 40));
 			FontMetrics metrics = getFontMetrics(g.getFont());
-			g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics.stringWidth("Score: " + applesEaten))/2, g.getFont().getSize());
+			g.drawString("Score: " + applesEaten, (screen_width - metrics.stringWidth("Score: " + applesEaten))/2, g.getFont().getSize());
 			
 		}
 		else {
@@ -82,8 +82,8 @@ public class GamePanel extends JPanel implements ActionListener{
 		
 	}
 	public void newApple() {
-		appleX = random.nextInt((int)(SCREEN_WIDTH / UNIT_SIZE))*UNIT_SIZE;
-		appleY = random.nextInt((int)(SCREEN_HEIGHT / UNIT_SIZE))*UNIT_SIZE;
+		appleX = random.nextInt((int)(screen_width / (UNIT_SIZE + 5)))*UNIT_SIZE;
+		appleY = random.nextInt((int)(screen_height / (UNIT_SIZE + 5)))*UNIT_SIZE;
 	}
 	public void move() {
 		for(int i = bodyParts; i > 0; i--) {
@@ -110,9 +110,11 @@ public class GamePanel extends JPanel implements ActionListener{
 		if((x[0] == appleX) && (y[0] == appleY)) {
 			bodyParts++;
 			applesEaten++;
-            delay = delay-3;
+            delay = delay-5;
             background = new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255));
             this.setBackground(background);
+            screen_height = screen_height - 50;
+            screen_width = screen_width - 50;
 			newApple();
 		}
 	}
@@ -128,7 +130,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			running = false;
 		}
 		//Right wall
-		if(x[0] > SCREEN_WIDTH - 1) {
+		if(x[0] > screen_width - 1) {
 			running = false;
 		}
 		//Top Check
@@ -136,7 +138,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			running = false;
 		}
 		//Bottom Check
-		if(y[0] > SCREEN_HEIGHT - 1) {
+		if(y[0] > screen_height - 1) {
 			running = false;
 		}
 		if(!running) {
@@ -149,7 +151,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		g.setColor(Color.red);
 		g.setFont(new Font("Impact", Font.BOLD, 80));
 		FontMetrics metrics = getFontMetrics(g.getFont());
-		g.drawString("Game Over", (SCREEN_WIDTH - metrics.stringWidth("Game Over"))/2, SCREEN_HEIGHT / 2);
+		g.drawString("Game Over", (screen_width - metrics.stringWidth("Game Over"))/2, screen_height / 2);
 		if(reset) {
 			startGame();
 		}
