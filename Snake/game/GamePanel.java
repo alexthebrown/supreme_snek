@@ -74,7 +74,7 @@ public class GamePanel extends JPanel implements ActionListener{
 					g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 				}
 			}
-			g.setColor(Color.red);
+			g.setColor(Color.white);
 			g.setFont(new Font("Impact", Font.BOLD, 40));
 			FontMetrics metrics = getFontMetrics(g.getFont());
 			g.drawString("Score: " + applesEaten, (screen_width - metrics.stringWidth("Score: " + applesEaten))/2, g.getFont().getSize());
@@ -119,6 +119,9 @@ public class GamePanel extends JPanel implements ActionListener{
 			applesEaten++;
             delay = delay-5;
             background = new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255));
+			if(background == Color.RED){
+				background = new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255));
+			}
             this.setBackground(background);
             if(shrink){
                 screen_height = screen_height - 20;
