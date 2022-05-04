@@ -8,13 +8,14 @@ import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements ActionListener{
 	
-	static int screen_width = 750;
-    static final int ORIG_W = screen_width;
-	static int screen_height = 750;
-    static final int ORIG_H = screen_height;
+	static final int ORIG_W = 750;
+    static int screen_width = ORIG_W;
+	static final int ORIG_H = 750;
+    static int screen_height = ORIG_H;
 	static final int UNIT_SIZE = 15;
 	static final int GAME_UNITS = (screen_width * screen_height) / UNIT_SIZE;
-	static int delay = 60;
+	static final int DELAYINIT = 60;
+	static int delay = DELAYINIT;
 	final int x[] = new int[GAME_UNITS];
 	final int y[] = new int[GAME_UNITS];
 	int bodyParts = 6;
@@ -178,9 +179,10 @@ public class GamePanel extends JPanel implements ActionListener{
 		g.setFont(new Font("Impact", Font.BOLD, 85));
 		metrics = getFontMetrics(g.getFont());
 		g.drawString("Game Over", ((ORIG_W - metrics.stringWidth("Game Over"))/2) + 5, 5 + (ORIG_H / 2));
-		if(reset) {
-			startGame();
-		}
+		g.setColor(Color.white);
+		g.setFont(new Font("Impact", Font.BOLD, 50));
+		g.drawString("Score: "+ applesEaten, ((ORIG_W - metrics.stringWidth("Score: 332"))/2) + 5, 55 + (ORIG_H / 2));
+		timer.stop();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -219,6 +221,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			case KeyEvent.VK_ESCAPE:
 				if(!running) {
 					reset = true;
+					running = true;
 				}
 
 				break;
